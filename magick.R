@@ -117,3 +117,14 @@ image_crop(logo, "400x400+200+200")
 image_flip(logo) #垂直反转
 image_flop(logo) #水平反转
 
+
+
+# 2019.6.28
+#添加水印
+library(magick)
+a<-image_read("https://jeroen.github.io/images/Rlogo.png")
+b<-image_read("https://developer.r-project.org/Logo/Rlogo-3.png")%>%image_scale(.,"1100")
+b<-image_contrast(b) %>%image_enhance #增强图像的强度差异，减少噪音
+c<-image_transparent(b, 'white') #将白色部分变成透明
+image_composite(b,a,operator = "blend", offset = "+0+0",compose_args="70")
+image_composite(a,c,operator = "blend", offset = "+0+0",compose_args="40")
