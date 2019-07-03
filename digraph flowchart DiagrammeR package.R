@@ -1,3 +1,6 @@
+#这个包有很多函数
+#以下只是一个导出有向流程图的例子
+
 library(DiagrammeR)
 grViz("digraph flowchart {
       # node definitions with substituted label text
