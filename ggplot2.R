@@ -29,3 +29,31 @@ PP=ggplot()+
   labs(x="",y="",title="") 
 print(PP)
 dev.off()
+
+
+#ggplot2中自带的主题
+mtcars2 <- within(mtcars, {   #可以修改原表达式
+  vs <- factor(vs, labels = c("V-shaped", "Straight"))
+  am <- factor(am, labels = c("Automatic", "Manual"))
+  cyl  <- factor(cyl)
+  gear <- factor(gear)
+})
+p1 <- ggplot(mtcars2) +
+  geom_point(aes(x = wt, y = mpg, colour = gear)) +
+  labs(title = "Fuel economy declines as weight increases",
+       subtitle = "(1973-74)",
+       caption = "Data from the 1974 Motor Trend US magazine.",
+       tag = "Figure 1",
+       x = "Weight (1000 lbs)",
+       y = "Fuel economy (mpg)",
+       colour = "Gears")
+p1+theme_grey() #默认的主题
+p1+theme_gray()
+p1+theme_bw()
+p1+theme_linedraw()
+p1+theme_light()
+p1+theme_dark()
+p1+theme_minimal()
+p1+theme_classic()
+p1+theme_void()
+p1+theme_test()
