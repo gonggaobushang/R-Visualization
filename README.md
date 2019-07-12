@@ -1,5 +1,5 @@
 # R-Visualization
-R的可视化应用
+R的可视化应用。
 
 ## Network.R
 网络图。包括用networkD3包画交互式的网络图谱、用igraph包画能固定点的图谱等。
@@ -18,3 +18,6 @@ R的可视化应用
 
 ## magick.R
 图像处理：动图叠加、图层虚化等。
+
+## plotly.R
+plotly包可以交互式的画图。
