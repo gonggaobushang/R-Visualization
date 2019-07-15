@@ -210,3 +210,72 @@ plot_ly(ds, x = ~Date) %>%
       rangeslider = list(type = "date")),
     
     yaxis = list(title = "Price"))
+
+
+
+
+
+
+
+#加了按钮选择等功能
+library(plotly)
+library(quantmod)
+
+getSymbols("AAPL")
+df <- data.frame(Date=index(AAPL),coredata(AAPL))
+high_annotations <- list(
+  x=df$Date[df$AAPL.High == max(df$AAPL.High)], 
+  y=max(df$AAPL.High),
+  xref='x', yref='y',
+  text=paste0('High: $',max(df$AAPL.High)),
+  ax=0, ay=-40
+)
+low_annotations <- list(
+  x=df$Date[df$AAPL.Low == min(df$AAPL.Low)], 
+  y=min(df$AAPL.Low),
+  xref='x', yref='y',
+  text=paste0('Low: $',min(df$AAPL.Low)),
+  ax=0, ay=40
+)
+updatemenus <- list(
+  list(
+    active = -1,
+    type= 'buttons',
+    buttons = list(
+      list(
+        label = "High",
+        method = "update",
+        args = list(list(visible = c(FALSE, TRUE)),#只画最低价
+                    list(title = "Yahoo High",
+                         annotations = list(c(), high_annotations)))),
+      list(
+        label = "Low",
+        method = "update",
+        args = list(list(visible = c(TRUE, FALSE)),#只画最高价
+                    list(title = "Yahoo Low",
+                         annotations = list(low_annotations, c() )))),
+      list(
+        label = "Both",
+        method = "update",
+        args = list(list(visible = c(TRUE, TRUE)),
+                    list(title = "Yahoo",
+                         annotations = list(low_annotations, high_annotations)))),
+      list(
+        label = "Reset",
+        method = "update",
+        args = list(list(visible = c(TRUE, TRUE)),
+                    list(title = "Yahoo",
+                         annotations = list(c(), c())))))
+  )
+)
+ df %>%
+  plot_ly(type = 'scatter', mode = 'lines') %>%
+  add_lines(x=~Date, y=~AAPL.High, name="High",
+            line=list(color="#33CFA5")) %>%
+  add_lines(x=~Date, y=~AAPL.Low, name="Low",
+            line=list(color="#F06A6A")) %>%
+  layout(title = "1", showlegend=FALSE,
+         xaxis=list(title="Date"),
+         yaxis=list(title="Price ($)"),
+         updatemenus=updatemenus)
+ 
