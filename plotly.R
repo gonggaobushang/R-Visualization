@@ -90,3 +90,77 @@ plot_ly() %>%
                   showarrow = F)
     
  
+
+
+
+
+
+#自动描线，能够滑动的功能
+library(plotly)
+library(quantmod)
+getSymbols("AAPL",src='yahoo')
+df1 <- data.frame(Date=index(AAPL),coredata(AAPL))
+df1 <- df2<-tail(df1, 10)
+df1$ID <-df2$ID<- seq.int(nrow(df1))
+df2$AAPL.Close<-df2$AAPL.Close+100
+df1$pl<-rep(1,10)
+df2$pl<-rep(2,10)
+
+df3<-rbind(df1,df2)
+accumulate_by <- function(dat, var) {
+  var <- lazyeval::f_eval(var, dat)
+  lvls <- plotly:::getLevels(var)
+  dats <- lapply(seq_along(lvls), function(x) {
+    cbind(dat[var %in% lvls[seq(1, x)], ], frame = lvls[[x]])
+  })
+  dplyr::bind_rows(dats)
+}
+df3 <- df3 %>%
+  accumulate_by(~ID)
+df3 %>%
+  plot_ly(
+    x = ~ID, 
+    y = ~AAPL.Close, 
+    frame = ~frame,
+    type = 'scatter', 
+    mode = 'lines', 
+    #fill = 'tozeroy', 
+    split = ~pl,
+    #fillcolor='rgba(114, 186, 59, 0.5)',
+    #line = list(color = 'rgb(114, 186, 59)'),
+    text = ~paste("Day: ", ID, "<br>Close: $", AAPL.Close), 
+    hoverinfo = 'text'
+  ) %>%
+  layout(
+    title = "AAPL: Last 30 days",
+    yaxis = list(
+      title = "Close", 
+      range = c(10,400), 
+      zeroline = F,
+      tickprefix = "11$"
+    ),
+    xaxis = list(
+      title = "Day", 
+      tickvals = c(1:10), 
+      ticktext=c(1:10+21),
+      zeroline = F, 
+      showgrid = F,
+      tickmode="array"
+    )
+  ) %>% 
+  animation_opts(
+    frame = 100, 
+    transition = 0, 
+    redraw = FALSE
+  ) %>%
+  animation_slider(
+    currentvalue = list(
+      prefix = "Day "
+    )
+  )%>%
+  animation_button(
+    x = 1, xanchor = "right", y = 0, yanchor = "bottom"
+  )%>%
+  animation_slider(
+    hide = F
+  )
