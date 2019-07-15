@@ -43,7 +43,7 @@ plot_ly() %>%
     marker=list(
       color=c("red","yellow","brown","green"),
       line=list(color = 'rgb(1,50,200)',
-                width = 2))
+                width = 2))  #,orientation = 'h' 变成横版
   )%>%
   add_bars(x=c("一","二","三","四"),y = c(14,13,12,11), name = '不你不是，',
             text=c("不是","没有","你","瞎说"),
