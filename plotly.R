@@ -279,3 +279,99 @@ updatemenus <- list(
          yaxis=list(title="Price ($)"),
          updatemenus=updatemenus)
  
+
+
+
+
+
+
+
+#################################
+# 能够横向拖动列的表格
+plot_ly(
+  type = 'table',
+  columnwidth = c(1, 1),
+  columnorder = c(0,1),
+  header = list(
+    values = c("Cut","Price"),
+    align = c("center", "center"),
+    line = list(width = 1, color = 'black'),
+    fill = list(color = c("grey", "grey")),
+    font = list(family = "Arial", size = 14, color = "white")
+  ),
+  cells = list(
+    values = rbind(diamonds$cut, diamonds$price),
+    align = c("center", "center"),
+    line = list(color = "black", width = 1),
+    font = list(family = "Arial", size = 12, color = c("black"))
+  ))
+
+plot_ly(
+  type = 'table',
+  header = list(
+    values = c('<b>EXPENSES</b>', '<b>Q1</b>','<b>Q2</b>','<b>Q3</b>','<b>Q4</b>'),
+    line = list(color = '#506784'),
+    fill = list(color = '#119DFF'),
+    align = c('left','center'),
+    font = list(color = 'white', size = 12)
+  ),
+  cells = list(
+    values = rbind(
+      c('Salaries', 'Office', 'Merchandise', 'Legal', '<b>TOTAL</b>'),
+      c(1200000, 20000, 80000, 2000, 1212000),
+      c(1300000, 20000, 70000, 2000, 1392000),
+      c(1300000, 20000, 120000, 2000, 1442000),
+      c(1400000, 20000, 90000, 2000, 1412000)),
+    line = list(color = '#506784'),
+    fill = list(color = c('#25FEFD', 'white')),
+    align = c('left', 'center'),
+    font = list(color = c('#506784'), size = 12)
+  ))
+
+plot_ly(
+  type = 'table',
+  header = list(
+    values = c("<b>Cars</b>", names(mtcars)),
+    align = c('left', rep('center', ncol(mtcars))),
+    line = list(width = 1, color = 'black'),
+    fill = list(color = 'rgb(235, 100, 230)'),
+    font = list(family = "Arial", size = 14, color = "white")
+  ),
+  cells = list(
+    values = rbind(
+      rownames(mtcars), 
+      t(as.matrix(unname(mtcars)))
+    ),
+    align = c('left', rep('center', ncol(mtcars))),
+    line = list(color = "black", width = 1),
+    fill = list(color = c('rgb(235, 193, 238)', 'rgba(228, 222, 249, 0.65)')),
+    font = list(family = "Arial", size = 12, color = c("black"))
+  ))
+
+values <- rbind(c('Salaries', 'Office', 'Merchandise', 'Legal', '<b>TOTAL<br>EXPENSES</b>'),
+                c("Lorem ipsum dolor sit amet, tollit discere inermis pri ut. Eos ea iusto timeam, an prima laboramus vim. Id usu aeterno adversarium, summo mollis timeam vel ad", 
+                  "Lorem ipsum dolor sit amet, tollit discere inermis pri ut. Eos ea iusto timeam, an prima laboramus vim. Id usu aeterno adversarium, summo mollis timeam vel ad", 
+                  "Lorem ipsum dolor sit amet, tollit discere inermis pri ut. Eos ea iusto timeam, an prima laboramus vim. Id usu aeterno adversarium, summo mollis timeam vel ad", 
+                  "Lorem ipsum dolor sit amet, tollit discere inermis pri ut. Eos ea iusto timeam, an prima laboramus vim. Id usu aeterno adversarium, summo mollis timeam vel ad", 
+                  "Lorem ipsum dolor sit amet, tollit discere inermis pri ut. Eos ea iusto timeam, an prima laboramus vim. Id usu aeterno adversarium, summo mollis timeam vel ad"))
+
+plot_ly(
+  type = 'table',
+  columnorder = c(1,2),
+  columnwidth = c(80,400),
+  header = list(
+    values = c('<b>EXPENSES</b><br>as of July 2017', '<b>DESCRIPTION</b>'),
+    line = list(color = '#506784'),
+    fill = list(color = '#119DFF'),
+    align = c('left','center'),
+    font = list(color = 'white', size = 12),
+    height = 40
+  ),
+  cells = list(
+    values = values,
+    line = list(color = '#506784'),
+    fill = list(color = c('#25FEFD', 'white')),
+    align = c('left', 'center'),
+    font = list(color = c('#506784'), size = 12),
+    height = 30
+  ))
