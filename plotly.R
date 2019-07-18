@@ -87,7 +87,10 @@ plot_ly() %>%
                   font = list(#family = 'Arial',
                               size = 14,
                               color = 'purple'),
-                  showarrow = F)
+                  showarrow = F)->p
+#保存下来
+htmlwidgets::saveWidget(as_widget(p), "index.html")
+
     
  
 
