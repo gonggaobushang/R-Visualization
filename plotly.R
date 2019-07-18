@@ -393,3 +393,21 @@ plot_ly() %>%
     title = "Double Y Axis", yaxis2 = ay,
     xaxis = list(title="x")
   )
+
+
+
+
+#热力图
+m <- matrix(rnorm(9), nrow = 3, ncol = 3)
+p <- plot_ly(
+  x = c("a", "b", "c"), y = c("d", "e", "f"),
+  z = m, type = "heatmap"
+)
+#添加等高线
+vals <- unique(scales::rescale(c(volcano)))
+o <- order(vals, decreasing = FALSE)
+cols <- scales::col_numeric("Blues", domain = NULL)(vals)
+colz <- setNames(data.frame(vals[o], cols[o]), NULL)
+p <- plot_ly(z = volcano, colorscale = colz, type = "heatmap")
+add_heatmap(p)
+add_contour(p)
