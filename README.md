@@ -24,3 +24,6 @@ plotly包可以交互式的画图。
 
 ## ggThemeAssist.R
 用ggThemeAssist包可以实现鼠标调整ggplot2图像，自动输出相应代码。
+
+## visreg.R
+visreg包可以可视化展现随机森林、逻辑回归等多种回归模型。
