@@ -30,3 +30,7 @@ visreg包可以可视化展现随机森林、逻辑回归等多种回归模型�
 
 ## plot.R
 底层plot画图。
+
+## corrplot.R
+用corrplot包画相关矩阵图。
+
