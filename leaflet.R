@@ -1,4 +1,3 @@
-# https://mp.weixin.qq.com/s/Te9BGstblQ3YxEIL1ghMig
 library(leaflet)
 ################################################################基本设置
 leaflet(options = leafletOptions(minZoom = 0, maxZoom = 18))
@@ -297,31 +296,12 @@ leaflet(China_map) %>%
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# https://mp.weixin.qq.com/s/4O5wAh83RAX2a2fdbGg4cA
-
-library(leaflet)
-
 # 调动颜色函数，生成一个palette函数
 pal <- colorNumeric(c("red", "green", "blue"), 1:10)
 # 给色板函数传进一个数字向量，返回颜色色值向量。
 pal(c(1, 6, 9))
 
-########################################################跳过调用json的章节
+
 library(leafletCN)
 
 regionNames("China")
