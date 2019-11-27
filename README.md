@@ -35,4 +35,4 @@ visreg包可以可视化展现随机森林、逻辑回归等多种回归模型�
 用corrplot包画相关矩阵图。
 
 ## leaflet.R
-用leaflet包制作交互式图形。
+用leaflet包制作交互式图形。用leafletCN包制作中国地图。
