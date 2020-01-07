@@ -20,7 +20,7 @@ R的可视化应用。
 图像处理：动图叠加、图层虚化等。
 
 ## plotly.R
-plotly包可以交互式的画图。
+plotly包可以做交互式的图。
 
 ## ggThemeAssist.R
 用ggThemeAssist包可以实现鼠标调整ggplot2图像，自动输出相应代码。
@@ -36,3 +36,6 @@ visreg包可以可视化展现随机森林、逻辑回归等多种回归模型�
 
 ## leaflet.R
 用leaflet包制作交互式图形。用leafletCN包制作中国地图。
+
+## canvasXpress.R
+canvasXpress包可以做交互式的图。
