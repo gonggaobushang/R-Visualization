@@ -14,7 +14,7 @@ R的可视化应用。
 用DiagrammeR包画流程图。
 
 ## ggplot2.R
-最经典的ggplot2参数调整、应用等。
+最经典的ggplot2参数调整、应用等。用ggpubr包的ggarrange函数将多个ggplot2图呈现在同一个界面上。
 
 ## magick.R
 图像处理：动图叠加、图层虚化等。
