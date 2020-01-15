@@ -57,3 +57,9 @@ p1+theme_minimal()
 p1+theme_classic()
 p1+theme_void()
 p1+theme_test()
+
+
+#用par,layout不能直接在一个界面上呈现多个ggplot2图
+#用ggpubr包的ggarrange可以实现这个功能
+library(ggpubr)
+ggarrange()
